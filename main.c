@@ -4,6 +4,13 @@ int main () {
     // Hello.
 
     printf("Hej"); 
+    printf("dfgfgfgsf");
+    printf("dfgfgfgsf");
+    printf("dfgfgfgsf");
+    printf("dfgfgfgsf");
+    printf("dfgfgfgsf");
+    printf("dfgfgfgsf");
+    
 }
 
 // hej hejh ehjeh jekhskdf
