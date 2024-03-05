@@ -15,3 +15,29 @@ document.addEventListener('DOMContentLoaded', function() {
         welcomeMessageToggled = !welcomeMessageToggled; // Toggle the welcome message state
     });
 });
+
+/*
+changeMessageButton.addEventListener('click', function() {
+    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate random color
+    welcomeSection.style.backgroundColor = randomColor; // Change background color
+}); 
+
+let footerVisible = true;
+
+changeMessageButton.addEventListener('click', function() {
+    footerVisible = !footerVisible; // Toggle footer visibility
+    if (footerVisible) {
+        footer.style.display = 'block'; // Show footer
+    } else {
+        footer.style.display = 'none'; // Hide footer
+    }
+});
+
+let clickCount = 0;
+
+changeMessageButton.addEventListener('click', function() {
+    clickCount++;
+    welcomeSection.querySelector('h2').textContent = `Button clicked ${clickCount} times!`;
+});
+
+*/
