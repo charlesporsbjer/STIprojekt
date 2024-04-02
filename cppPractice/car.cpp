@@ -1,124 +1,75 @@
 #include <iostream>
 #include <string>
 
+#include "Vehicle.hpp"
+#include "Engine.hpp"
+#include "Transmission.hpp"
+#include "car.hpp"
+
 using namespace std;
 
-class Chassi {
-private:
-    string color;
-    string material;
-public:
-    Chassi(string color, string material) : color(color), material(material) {}
+// TODO: code other functionalitites in other files.
 
-    void print() const {
-        cout << "Chassi specifications: \n" << 
-        "Color: " << color << "\n" <<
-            "Material: " << material << "\n"; 
-    }
-};
-
-class Engine {
-private:
-    string fuel;
-    float volume;
-    int cylinders;
-    int horsepower;
-public:
-    Engine(string fuel, float volume, int cylinders, int horsepower)
-        : fuel(fuel), volume(volume), cylinders(cylinders), horsepower(horsepower) {
-        }
-    void print() const {
-        cout << "Engine specifications: \n" << 
-            "Fuel type: " << fuel << "\n" <<
-                "Volume: " << volume << "\n" <<
-                    "Cylinders: " << cylinders << "\n"
-                        "Horsepower: " << horsepower << "\n";
-    }
-};
-
-class Transmission {
-private:
-    int gears;
-    string type;
-public:
-    Transmission(int gears, string type) : gears(gears), type(type) {}
-
-    void print() const {
-        cout << "Transmission specifications: \n" <<
-            "Gears: " << gears << "\n" <<
-                "Type: " << type << "\n";
-    }
-};
-
-class Tyres {
-private:
-    string brand;
-    string season;
-    int year;
-public:
-    Tyres(string brand, string season, int year) : brand(brand), season(season), year(year) {}
-
-    void print() const {
-        cout << "Tyre specifications: \n" << 
-            "Brand: " << brand << "\n" <<
-                "Season: " << season << "\n" <<
-                    "Production year: " << year << "\n";
-    }
-};
-
-class Vehicle {
-public:
-    Vehicle(string category, string make, int productionYear, Chassi chassi)
-        : category(category), make(make), productionYear(productionYear), chassi(chassi) {}
-
-    virtual void print() const = 0;
-
-    virtual ~Vehicle() {}
-protected:
-    string category;
-    string make;
-    int productionYear;
-    Chassi chassi;
-};
-
-class Car : public Vehicle {
-private:
-    string model;
-    string body;
-    Engine engine;
-    Transmission transmission;
-    Tyres tyres;
-public:
-    Car(string category, string make, int year, Chassi chassi, string model, string body, Engine engine, Transmission transmission, Tyres tyres) 
-        : Vehicle(category, make, year, chassi), model(model), body(body), engine(engine), transmission(transmission), tyres(tyres) {}
-
-    void print() const override {
-        cout << "Car specifications: \n\n" <<
-            "Make: " << make << "\n" <<
-                "Model: " << model << "\n" <<
-                    "Body: " << body << "\n" << 
-                        "Production year: " << productionYear << "\n";
-        cout << "\n";                
-        chassi.print();
-        cout << "\n";
-        engine.print();
-        cout << "\n";
-        transmission.print();
-        cout << "\n";
-        tyres.print();
-
-    }
-};
+// TODO: Create Race method to pit one Vehicle against another. A new class?
 
 
-int main() {
-    Chassi blackSteel("Black", "Steel/Plastic");
-    Engine v6("Petrol", 2.5, 6, 165);
-    Transmission manual5(5, "Manual");
-    Tyres summerTyres("Michelin", "Summer", 1999);
-    Car cougar("Car", "Ford", 2001, blackSteel, "Cougar", "Coupe", v6, manual5, summerTyres);
+Car::Car(string owner, string category, string make, int year, Chassis chassis, Tyres tyres, Brakes brakes, string model, string body, string drivetrain, Engine engine, Transmission transmission, int weight, int mileage, int fuelCapacity, float fuel, float consumption) 
+    : Vehicle(owner, category, make, year, chassis, tyres, brakes, weight), model(model), body(body), drivetrain(drivetrain), engine(engine), transmission(transmission), mileage(mileage), fuelCapacity(fuelCapacity), fuel(fuel), consumption(consumption) {}
 
-    cougar.print();
-
-    return 0;
+void Car::print() const {
+    cout << "Car specifications: \n\n" <<
+    "Owner: " << owner << "\n" <<
+        "Make: " << make << "\n" <<
+            "Model: " << model << "\n" <<
+                "Body: " << body << "\n" << 
+                    "Drivetrain: " << drivetrain << "\n" << 
+                        "Production year: " << productionYear << "\n" << 
+                            "Weight: " << weight << "\n" <<
+                                "Mileage: " << mileage << "\n" <<
+                                    "Fuel capacity : " << fuelCapacity << "\n" <<
+                                        "Fuel: " << fuel << "\n" <<
+                                            "Consumption: " << consumption << "\n";
+                            
+    cout << "\n";                
+    chassis.print();
+    cout << "\n";
+    engine.print();
+    cout << "\n";
+    transmission.print();
+    cout << "\n";
+    tyres.print();
+    cout << "\n";
+    brakes.print();
 }
+void Car::drive(int kilometers) {
+    fuel -= consumption * (kilometers / 10);
+    if (fuel < 5.0)
+        cout << "Car needs to refuel. \n";
+    if (fuel <= 0.0) {
+        fuel = 0.0;
+        cout << "Car ran out of fuel. \n"; 
+    }
+    cout << "Drove " << kilometers << " kilometers. Tank is now at " << fuel << ". \n";
+}
+void Car::refuel(float volume) {
+    fuel += volume;
+    if(fuel >= fuelCapacity) {
+        fuel = fuelCapacity;
+        cout << "Tank is full. \n";
+    }
+    else 
+        cout << "Filled with " << volume << " liters. Tank is now at " << fuel << "\n";
+}
+double Car::calculateSpeed() {
+    double speed;
+    double ratio = this->engine.getHorsepower() / weight;
+    
+    if (drivetrain == "FWD")        speed = (ratio * 0.95);
+    else if (drivetrain == "AWD")   speed = (ratio * 1.2);
+    else                            speed = ratio;
+    
+    return speed;
+}
+
+string Car::getModel() { return model; }
+

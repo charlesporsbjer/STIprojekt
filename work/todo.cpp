@@ -1,12 +1,12 @@
 #include <iostream> 
-#include 
-#include 
+#include <vector>
+#include <string>
 
 using namespace std;
 
 class ToDoList {
 private:
-    vector tasks;
+    vector<string> tasks;
 
 public:
     void addTask(const string& task) {
