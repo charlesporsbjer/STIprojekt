@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "drums"
+version = "0.1.0"
+description = "Trying out Erik's idea."
+authors = ["charlesporsbjer <118073335+charlesporsbjer@users.noreply.github.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+networkx = "^3.3"
+matplotlib = "^3.8.4"
+jupyter = "^1.0.0"
+simpleaudio = "^1.0.4"
+pydub = "^0.25.1"
+pygame = "^2.5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
