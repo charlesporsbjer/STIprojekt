@@ -381,7 +381,7 @@ def toggle_blind(house_id: UUID4, blind_name: str, current_user: User = Depends(
     if not blind_found:
         raise HTTPException(status_code=404, detail="Blind not found.")
     
-@app.patch("/blinds/{house_id}/{direction}")
+@app.patch("/blinds/{house_id}/direction/{direction}")
 def set_all_blinds(house_id: UUID4, direction: str, current_user: User = Depends(get_current_user)) -> dict[str, str]:
     """Sets all blinds to desired setting."""
     house_id_str = str(house_id)
@@ -413,13 +413,13 @@ def get_thermostat_setting(house_id: UUID4, room: str, current_user: User = Depe
     if not house_id_str in house_db or current_user.username not in username_db:
         raise HTTPException(status_code=404, detail="House not found or user not authenticated.")
     else:
-        if not room in house_db[house_id_str].sensors:
-            raise HTTPException(status_code=404, detail="Sensor not found")
-        else:
-            for sensor in house_db[house_id_str].sensors:
-                if sensor.room == room:
-                    current_temp = sensor.thermostat
-                    return {"message": f"Thermostat is currently set to {current_temp}°C"}
+        sensors = house_db[house_id_str].sensors
+        for sensor in sensors:
+            if sensor.room == room:
+                current_temp = sensor.thermostat
+                return {"message": f"Thermostat is currently set to {current_temp}°C"}
+            else:
+                raise HTTPException(status_code=404, detail="Sensor not found")
 
 @app.get("/sensors/{house_id}/{room}/temp")
 def get_current_sensor_temp(house_id: UUID4, room: str, current_user: User = Depends(get_current_user)) -> dict[str, str]:
@@ -429,7 +429,7 @@ def get_current_sensor_temp(house_id: UUID4, room: str, current_user: User = Dep
         raise HTTPException(status_code=404, detail="House not found or user not authenticated.")
     else:
         for sensor in house_db[house_id_str].sensors:
-            if sensor.name == room:
+            if sensor.room == room:
                 current_temp = sensor.current_temp
                 return {"message": f"The current temperature reading from {room} is {current_temp}°C"}
 
@@ -454,7 +454,7 @@ def get_current_avg_temp(house_id: UUID4, current_user: User = Depends(get_curre
     avg = tot / len(house.sensors)
     return {"message": f"Current temperature in house is {avg}°C"}
 
-@app.post("/sensors/{house_id}/{room}" status_code=201)
+@app.post("/sensors/{house_id}/{room}", status_code=201)
 def add_sensor(house_id: UUID4, room: str, current_user: User = Depends(get_current_user)) -> Sensor:
     """Adds a sensor to sensors."""
     house_id_str = str(house_id)
