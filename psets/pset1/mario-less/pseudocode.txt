@@ -1,0 +1,30 @@
+1. prompt user for valid input
+
+int h = 0
+
+get_int("Height: ");
+
+loop
+
+while (h = 0);
+{
+    get_int("Height: ");
+}
+
+h, h < 1, h > 9
+
+2. if invalid reprompt for valid input
+
+
+
+
+3. create pyramid
+
+for (initialization; condition; update)
+{
+    printf("#")
+}
+printf("#")
+printf("\n")
+
+while ()

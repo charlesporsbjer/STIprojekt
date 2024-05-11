@@ -1,0 +1,1 @@
+* The assignment was to code the dictionary.c file *

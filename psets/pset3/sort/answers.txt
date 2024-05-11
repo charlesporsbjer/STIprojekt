@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: deduction, also it is fastest for sorted and slowest for reversed.
+
+sort2 uses: merge sort
+
+How do you know?: it is much quicker than the others, it also has similar times for sorted and random.
+
+sort3 uses: selection sort
+
+How do you know?: it has similar times for random and sorted, meaning it is looking at all numbers.
