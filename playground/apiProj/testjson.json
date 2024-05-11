@@ -1,0 +1,29 @@
+{
+    "recept": {
+        "namn": "Chokladkaka", 
+        "Portioner": 8,
+        "Ingredienser": [
+            {
+                "mängd": "200g",
+                "typ": "choklad",
+                "sort": "mörk"
+            },
+            {
+                "mängd": "100g",
+                "typ": "smör",
+                "sort": "smör"
+            },
+            {
+                "mangd": "3st",
+                "typ": "ägg",
+                "sort": "ägg"
+            }
+        ],
+        "instruktioner": [
+            "Smält hokladen och smöret i ett vattenbad.",
+            "Vispa äggen och sockret pösigt.",
+            "Blanda alla ingredienserna och häll i en form.",
+            "Grädda i ugnen på 175 grader i 25"
+        ]
+    }
+}

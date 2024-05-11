@@ -1,0 +1,65 @@
+/*
+pseudo
+
+open memory card
+repeat until end of card
+    read 512 bytes into a buffer
+    if start of new jpeg
+        if first jpeg
+            start writing first file
+        else
+            close current file and open new file
+    else
+        if already found jpeg
+            keep writing to current jpeg
+close any remaining files
+
+TODO:
+open memory card
+look for beginning of a jpeg
+open a new jpeg file
+write 512 bytes until a new jpeg is found
+stop at end of file
+
+FILE *f fopen(filename, "r");
+
+fread(data, size (BYTE), number (512), inptr)
+
+use buffer (array of bytes)
+
+buffer[0] 0xff
+buffer[1] 0xd8
+buffer[2] 0xff
+(buffer[3] & 0xf0) == 0xe0
+
+making a new jpeg
+
+filenames: ###.jpg, starting at 000.jpg
+
+need counter to keep track of jpgs, for to know what to name them
+
+to name files use
+
+sprintf(filename, "03i.jpg", 2;) (2 means file will be names 002.jpg)
+
+FILE *img = fopen(filename, "w");
+
+fwrite(data, size, number, outptr);
+
+data: pointer to bytes that will be written to file
+size: size of each element to write
+number: number of elements to write
+outptr: FILE * to write to
+
+fread(data, size, number, inptr)
+
+data: pointer to where to store data you're reading
+size: size of each element to read
+number: number of elements to read
+inptr: FILE * to read from
+
+fread returns number of items of size (size) that were read
+
+use this to write a condition that determines if fread has gotten to the end of the file */
+
+

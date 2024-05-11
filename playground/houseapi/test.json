@@ -1,0 +1,26 @@
+{
+    "recept": {
+       "namn": "Chokladkaka",
+       "portioner": 8,
+       "ingredienser": {
+            "mörk_choklad": {
+                "mängd": "200g",
+                "typ": "choklad"
+            },
+            "Smör": {
+                "mängd": "100g",
+                "typ": "smör"
+            },
+            "ägg": {
+                "mängd": "3st",
+                "typ": "ägg"
+            }    
+        }, 
+        "instruktioner": {
+            "steg1": "Smält chokladen blabla",
+            "steg2": "Vipsa äggen blabla",
+            "steg3": "Blanda alla ingredienser blabla",
+            "steg4": "Grädda i ugnen blabla"
+        }
+    } 
+}

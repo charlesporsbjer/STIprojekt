@@ -332,6 +332,7 @@ currentTime = millis();
 
     // Blink the 'O' LEDs.
     blinkLEDforO();
+    
     if (!win)
         blinkLEDforCursor();
     

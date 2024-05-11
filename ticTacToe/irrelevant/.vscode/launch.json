@@ -8,7 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-
+      "cwd": "c:/Users/maple/OneDrive/Dokument/GitHub/STIprojekt/ticTacToe/irrelevant",
+      "program": "c:/Users/maple/OneDrive/Dokument/GitHub/STIprojekt/ticTacToe/irrelevant/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -1,0 +1,16 @@
+
+
+ask for input text
+
+return text with calls from ettlers, words and sentences
+
+(function)
+extract letters from text
+
+(function)
+extract words from text
+
+(function)
+extract sentences from text
+
+calculate variables into reading difficulty
