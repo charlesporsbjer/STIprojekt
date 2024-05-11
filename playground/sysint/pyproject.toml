@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "sysint"
+version = "0.1.0"
+description = ""
+authors = ["charlesporsbjer <118073335+charlesporsbjer@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+uvicorn = "^0.29.0"
+fastapi = "^0.110.1"
+uuid = "^1.30"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
