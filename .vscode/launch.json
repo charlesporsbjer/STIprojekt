@@ -8,8 +8,7 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/maple/OneDrive/Dokument/GitHub/STIprojekt",
-      "program": "c:/Users/maple/OneDrive/Dokument/GitHub/STIprojekt/build/Debug/outDebug",
+
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
